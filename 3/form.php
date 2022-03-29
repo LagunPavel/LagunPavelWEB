@@ -16,15 +16,15 @@
         <form method="POST" action="">
             <div class="input-group">
                 <span class="input-group-text" id="basic-addon1">Имя</span>
-                <input type="text" class="form-control" name="name" aria-describedby="basic-addon1" placeholder="Ванечка" />
+                <input type="text" class="form-control" name="name" aria-describedby="basic-addon1" placeholder="Ваше Имя" />
             </div>
             <div class="input-group">
                 <span class="input-group-text" id="basic-addon2">Email</span>
-                <input type="text" class="form-control" name="email" aria-describedby="basic-addon2" placeholder="v1@mail.ru" />
+                <input type="text" class="form-control" name="email" aria-describedby="basic-addon2" placeholder="Ваша Почта@gmail.com" />
             </div>
             <div class="input-group">
                 <span class="input-group-text" id="basic-addon3">Дата рождения</span>
-                <input type="date" class="form-control" aria-describedby="basic-addon3" placeholder="v1@mail.ru" name="birth"/>
+                <input type="date" class="form-control" aria-describedby="basic-addon3" placeholder="Ваша Почта@gmail.com" name="birth"/>
             </div>
             <div class="form-check" id="gender-block">
                 <span class="input-group-text">Пол</span>
