@@ -66,7 +66,7 @@ $powers = implode(',',$_POST['select']);
 
 $user = 'u47601';
 $pass = '7251756';
-$db = new PDO('mysql:host=localhost;dbname=u47574', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+$db = new PDO('mysql:host=localhost;dbname=u47601', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
 
 // Подготовленный запрос. Не именованные метки.
 try {
