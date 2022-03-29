@@ -10,7 +10,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-	background-color:#660b0b;
+	background-color:#26eb74;
 }
 
 .form-container {
@@ -22,7 +22,7 @@ body {
     border: 1px solid #d82a40 ;
     border-radius: 10px;
     width: 25%;
-	background-color:#660b0b;
+	background-color:#26eb74;
 	
 }
 
@@ -35,7 +35,7 @@ body {
     font-size: 22px;
     color: #d76326;
     padding-bottom: 10px;
-    border-bottom: 1px solid #660b0b;
+    border-bottom: 1px solid #26eb74;
     display: block;
     width: 100%;
 }
@@ -67,5 +67,5 @@ body {
     display: block;
     width: 100%;
 	background-color:#d5983c;
-	border-bottom: 1px solid #660b0b;
+	border-bottom: 1px solid #26eb74;
 }
