@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
-  <title>Task 5</title>
+  <title>6 задание по ВЕБ Лагун. П</title>
   <style>
     .error {
       color: rgba(245, 46, 46, 1);
