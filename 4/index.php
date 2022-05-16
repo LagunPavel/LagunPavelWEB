@@ -151,8 +151,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $policy = $_POST['policy'];
     $powers = implode(',', $_POST['abilities']);
 
-    $user = 'u47523';
-    $pass = '2958871';
+    $user = 'u47601';
+    $pass = '7251756';
     $db = new PDO('mysql:host=localhost;dbname=u47523', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
 
     try {
