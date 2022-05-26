@@ -35,7 +35,7 @@ if (!empty($messages)) {
   <div class="form1">
   <form action="index.php" method="POST">
     <label> ФИО </label> <br>
-    <input name="fio" <?php if ($errors_ar['fio']) {print 'class="error"';} ?> value="<?php print $values['fio']; ?>" /> <br>
+    <input name="name" <?php if ($errors_ar['name']) {print 'class="error"';} ?> value="<?php print $values['name']; ?>" /> <br>
     <label> Почта </label> <br>
     <input name="mail" type="email" <?php if ($errors_ar['mail']) {print 'class="error"';} ?> value="<?php print $values['mail']; ?>"/> <br>
     <label> Год рождения </label> <br>
