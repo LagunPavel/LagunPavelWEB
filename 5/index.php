@@ -242,8 +242,8 @@ else {
             $stmt = $db->prepare("INSERT INTO members SET login = ?, pass = ?, name = ?, email = ?, date = ?, gender = ?, limbs = ?, bio = ?, policy = ?");
             $stmt->execute(array($login, $hash, $name, $email, $date, $gender, $limbs, $bio, $policy));
 
-            $superpowers = $db->prepare("INSERT INTO powers2 SET power_id = ?, powers = ?, user_login = ? ");
-            $superpowers->execute(array($power_id, $powers, $login));
+            $superpowers = $db->prepare("INSERT INTO powers2 SET powers = ?, user_login = ? ");
+            $superpowers->execute(array($powers, $login));
         } catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
             exit();
