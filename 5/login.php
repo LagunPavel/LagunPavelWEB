@@ -1,88 +1,82 @@
 <?php
-
-/**
- * Файл login.php для не авторизованного пользователя выводит форму логина.
- * При отправке формы проверяет логин/пароль и создает сессию,
- * записывает в нее логин и id пользователя.
- * После авторизации пользователь перенаправляется на главную страницу
- * для изменения ранее введенных данных.
- **/
-
-// Отправляем браузеру правильную кодировку,
-// файл login.php должен быть в кодировке UTF-8 без BOM.
 header('Content-Type: text/html; charset=UTF-8');
 
+// Начинаем сессию.
 session_start();
 
 // В суперглобальном массиве $_SESSION хранятся переменные сессии.
 // Будем сохранять туда логин после успешной авторизации.
-
-/*print($_SESSION['login']);
 if (!empty($_SESSION['login'])) {
-  header('Location: index.php');
-}*/
+    header('Location: ./');
+}
 
 // В суперглобальном массиве $_SERVER PHP сохраняет некторые заголовки запроса HTTP
 // и другие сведения о клиненте и сервере, например метод текущего запроса $_SERVER['REQUEST_METHOD'].
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-  if (!empty($_SESSION['login'])) {
-  header('Location: index.php');
-  }else{
+    if (!empty($_GET['logout'])) {
+        session_destroy();
+        $_SESSION['login'] = '';
+        header('Location: ./');
+    }
+    if (!empty($_GET['error'])) {
+        print('<div>Не верный пароль/логин проверьте корректность введенных данных</div>');
+    }
 ?>
-<style>
-  .form-sign-in{
-    max-width: 960px;
-    text-align: center;
-    margin: 0 auto;
-  }
-</style>
-<div class="form-sign-in">
-<form action="login.php" method="post">
-  <input name="login" /> Логин<br>
-  <input name="pass" type="password"/> Пароль<br>
-  <input type="submit" value="Войти" />
-</form>
-</div>
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
+        <title>Login</title>
+    </head>
+
+    <body>
+        <form action="" method="POST" class="login-block">
+            <div>
+                <span>Логин:</span>
+                <input name="login" />
+            </div>
+            <div>
+                <span>Пароль:</span>
+                <input name="pass" />
+            </div>
+            <input type="submit" value="Войти" />
+        </form>
+        </div>
+    </body>
+
+    </html>
+
 <?php
-  }
 }
 // Иначе, если запрос был методом POST, т.е. нужно сделать авторизацию с записью логина в сессию.
 else {
+    $user = 'u47601';
+    $pass = '7251756';
+    $db = new PDO('mysql:host=localhost;dbname=u47601', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
 
-  // TODO: Проверть есть ли такой логин и пароль в базе данных.
-  // Выдать сообщение об ошибках.
-  $l=$_POST['login'];
-  $p=$_POST['pass'];
-  $uid=0;
-  $error=TRUE;
-  $user = 'u47601';
-  $pass = '7251756';
-  $db1 = new PDO('mysql:host=localhost;dbname=u47601', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
-  if(!empty($l) and !empty($p)){
-    try{
-      $chk=$db1->prepare("select * from username where login=?");
-      $chk->bindParam(1,$l);
-      $chk->execute();
-      $username=$chk->fetchALL();
-      if(password_verify($p,$username[0]['pass'])){
-        $uid=$username[0]['id'];
-        $error=FALSE;
-      }
+    $member = $_POST['login'];
+    $member_pass_hash = md5($_POST['pass']);
+
+    try {
+        $stmt = $db->prepare("SELECT * FROM members WHERE login = ?");
+        $stmt->execute(array($member));
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        print('Error : ' . $e->getMessage());
+        exit();
     }
-    catch(PDOException $e){
-      print('Error : ' . $e->getMessage());
-      exit();
+    if ($result['pass'] == $member_pass_hash) {
+
+        $_SESSION['login'] = $_POST['login'];
+        $_SESSION['uid'] = $result['id'];
+
+        header('Location: ./');
+    } else {
+        header('Location: ?error=1');
     }
-  }
-  if($error==TRUE){
-    print('Неправильные логин или пароль <br> Если вы хотите создать нового пользователя <a href="index.php">назад</a> или попытайтесь войти снова <a href="login.php">войти</a>');
-    session_destroy();
-    exit();
-  }
-  // Если все ок, то авторизуем пользователя.
-  $_SESSION['login'] = $l;
-  // Записываем ID пользователя.
-  $_SESSION['uid'] = $uid;
-  // Делаем перенаправление.
-  header('Location: index.php');
 }
