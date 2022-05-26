@@ -39,13 +39,13 @@
             <div class="input-group">
                 <a href="login.php?logout=1" <?php (empty($_SESSION['login'])) ? print('style="display:none"') : print('style="display:inline-block"'); ?>>Выйти</a>
                 <span class="input-group-text" id="basic-addon1">Имя</span>
-                <input type="text" class="form-control" name="name" placeholder="Ванечка" <?php if ($errors['name']) {
+                <input type="text" class="form-control" name="name" placeholder="-" <?php if ($errors['name']) {
                                                                                                 print 'class="error"';
                                                                                             } ?> value="<?php print $values['name']; ?>" />
             </div>
             <div class="input-group">
                 <span class="input-group-text" id="basic-addon2">Email</span>
-                <input type="text" class="form-control" name="email" placeholder="v1@mail.ru" <?php if ($errors['email']) {
+                <input type="text" class="form-control" name="email" placeholder="-" <?php if ($errors['email']) {
                                                                                                     print 'class="error"';
                                                                                                 } ?> value="<?php print $values['email']; ?>" />
             </div>
