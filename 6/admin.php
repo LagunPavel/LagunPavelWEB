@@ -24,14 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $pass = '7251756';
         $member_id = $_POST['edit'];
 
-        $db = new PDO('mysql:host=localhost;dbname=u47574', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+        $db = new PDO('mysql:host=localhost;dbname=u47601', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
         $stmt = $db->prepare("SELECT * FROM members WHERE login = ?");
         $stmt->execute(array($member_id));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $values['name'] = $result['name'];
         $values['email'] = $result['email'];
-        $values['date'] = $result['date'];
+        $values['birth'] = $result['date'];
         $values['gender'] = $result['gender'];
         $values['limbs'] = $result['limbs'];
         $values['bio'] = $result['bio'];
@@ -40,21 +40,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         setcookie('user_id', $member_id, time() + 12 * 30 * 24 * 60 * 60);
 
         $powers = $db->prepare("SELECT * FROM powers2 WHERE user_login = ?");
-        $powers->execute(array($result['login']));
+        $powers->execute(array($member_id['login']));
         $result = $powers->fetch(PDO::FETCH_ASSOC);
         $values['select'] = $result['powers'];
     } else {
         $name = $_POST['name'];
         $email = $_POST['email'];
-        $date = $_POST['date'];
+        $date = $_POST['birth'];
         $gender = $_POST['gender'];
         $limbs = $_POST['limbs'];
         $bio = $_POST['bio'];
         $policy = $_POST['policy'];
         $select = implode(',', $_POST['select']);
-        $user = 'u47574';
-        $pass = '7501328';
-        $db = new PDO('mysql:host=localhost;dbname=u47574', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+        $user = 'u47601';
+        $pass = '7251756';
+        $db = new PDO('mysql:host=localhost;dbname=u47601', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
 
         $member_id = $_COOKIE['user_id'];
 
