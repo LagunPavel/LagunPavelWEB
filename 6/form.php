@@ -45,19 +45,19 @@
                                   print 'class="error"';
                                 } ?>>
         <span class="input-group-text" id="basic-addon1">Имя</span>
-        <input type="text" class="form-control" name="name" aria-describedby="basic-addon1" placeholder="Тарас" value="<?php print $values['name']; ?>" />
+        <input type="text" class="form-control" name="name" aria-describedby="basic-addon1" placeholder="-" value="<?php print $values['name']; ?>" />
       </div>
       <div class="input-group" <?php if ($errors['email']) {
                                   print 'class="error"';
                                 } ?>>
         <span class="input-group-text" id="basic-addon2">Email</span>
-        <input type="text" class="form-control" name="email" aria-describedby="basic-addon2" placeholder="example@mail.ru" value="<?php print $values['email']; ?>" />
+        <input type="text" class="form-control" name="email" aria-describedby="basic-addon2" placeholder="-" value="<?php print $values['email']; ?>" />
       </div>
       <div class="input-group <?php if ($errors['birth']) {
                                 print 'class="error"';
                               } ?>">
         <span class="input-group-text" id="basic-addon3">Дата рождения</span>
-        <input type="date" class="form-control" aria-describedby="basic-addon3" placeholder="example@mail.ru" name="birth" value="<?php print $values['birth']; ?>" />
+        <input type="date" class="form-control" aria-describedby="basic-addon3" placeholder="-" name="birth" value="<?php print $values['birth']; ?>" />
       </div>
       <div class="form-check" id="gender-block" <?php if ($errors['gender']) {
                                                   print 'class="error"';
