@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
-  <title>6 задание по ВЕБ Лагун. П</title>
+  <title>6-ое задание по ВЕБ Лагун П.П.</title>
   <style>
     .error {
       color: rgba(245, 46, 46, 1);
@@ -26,10 +26,12 @@
     }
     print('</div>');
   }
-
   // Далее выводим форму отмечая элементы с ошибками классом error
   // и задавая начальные значения элементов ранее сохраненными.
   ?>
+    <div class="form-container">
+        <a href="admin.php">Учетная запись администратора</a>
+    </div><br>
   <div class="form-container">
     <div class="form-title">
       Форма
